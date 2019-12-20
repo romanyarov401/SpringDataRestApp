@@ -34,8 +34,7 @@ public class DatabaseMSSQL {
                         resultSet.getInt("days_to_complete"),
                         resultSet.getDouble("work_cost"),
                         resultSet.getBoolean("pre_payment"),
-                        dt
-                        );
+                        dt);
                 list.add(request);
             }
 
