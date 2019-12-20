@@ -1,3 +1,5 @@
+//Запуск приложения отсюда
+
 package com.test.dog.firsttry;
 
 import org.springframework.boot.SpringApplication;

@@ -1,3 +1,5 @@
+//Репозиторий данных
+
 package com.test.dog.firsttry;
 
 import org.springframework.data.repository.CrudRepository;

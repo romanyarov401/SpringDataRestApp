@@ -1,3 +1,5 @@
+//Модель таблицы "заявок"
+
 package com.test.dog.firsttry;
 
 import javax.persistence.Entity;
@@ -126,6 +128,7 @@ public class Request {
 
     @Override
     public String toString() {
+
         return "Request{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
