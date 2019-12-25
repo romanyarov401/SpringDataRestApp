@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -114,6 +113,8 @@ public class Request {
         return prePayment;
     }
 
+    //public String getPrePaymentTxt() {return this.isPrePayment()? "Да" : "Нет";}
+
     public void setPrePayment(boolean prePayment) {
         this.prePayment = prePayment;
     }
@@ -140,5 +141,6 @@ public class Request {
                 ", prePayment='" + prePayment + '\'' +
                 ", dateRequest='" + dateRequest + '\'' +
                 '}';
+
     }
 }
