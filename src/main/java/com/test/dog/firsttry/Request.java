@@ -2,17 +2,15 @@
 
 package com.test.dog.firsttry;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity
+@Table(name = "vdg_request", catalog = "test_dog", schema = "dbo")
 public class Request {
 
-    private @Id
-    @GeneratedValue Long id;
+    private Long id;
     private String firstName;
     private String lastName;
     private String description;
@@ -25,7 +23,7 @@ public class Request {
     private Request() {}
 
     public Request(String firstName, String lastName, String description, String address,
-                   int daysToComplete, double workCost, boolean prePayment, LocalDateTime dateRequest) {
+                   int daysToComplete, double workCost, boolean prePayment) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.description = description;
@@ -33,26 +31,11 @@ public class Request {
         this.daysToComplete = daysToComplete;
         this.workCost = workCost;
         this.prePayment = prePayment;
-        this.dateRequest = dateRequest;
+        this.dateRequest = LocalDateTime.now();
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Request employee = (Request) o;
-        return Objects.equals(id, employee.id) &&
-                Objects.equals(firstName, employee.firstName) &&
-                Objects.equals(lastName, employee.lastName) &&
-                Objects.equals(description, employee.description);
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(id, firstName, lastName, address, dateRequest, workCost, daysToComplete);
-    }
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getId() {
         return id;
     }
@@ -61,6 +44,7 @@ public class Request {
         this.id = id;
     }
 
+    @Column(name = "first_name", nullable = false)
     public String getFirstName() {
         return firstName;
     }
@@ -69,6 +53,7 @@ public class Request {
         this.firstName = firstName;
     }
 
+    @Column(name = "last_name", nullable = false)
     public String getLastName() {
         return lastName;
     }
@@ -77,6 +62,7 @@ public class Request {
         this.lastName = lastName;
     }
 
+    @Column(name = "description", nullable = false)
     public String getDescription() {
         return description;
     }
@@ -85,6 +71,7 @@ public class Request {
         this.description = description;
     }
 
+    @Column(name = "address", nullable = false)
     public String getAddress() {
         return address;
     }
@@ -93,6 +80,7 @@ public class Request {
         this.address = address;
     }
 
+    @Column(name = "days_to_complete", nullable = false)
     public int getDaysToComplete() {
         return daysToComplete;
     }
@@ -101,6 +89,7 @@ public class Request {
         this.daysToComplete = daysToComplete;
     }
 
+    @Column(name = "work_cost", nullable = false)
     public double getWorkCost() {
         return workCost;
     }
@@ -109,6 +98,7 @@ public class Request {
         this.workCost = workCost;
     }
 
+    @Column(name = "pre_payment", nullable = false)
     public boolean isPrePayment() {
         return prePayment;
     }
@@ -119,6 +109,7 @@ public class Request {
         this.prePayment = prePayment;
     }
 
+    @Column(name = "date_request", nullable = false)
     public LocalDateTime getDateRequest() {
         return dateRequest;
     }

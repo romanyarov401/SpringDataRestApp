@@ -2,9 +2,8 @@
 
 package com.test.dog.firsttry;
 
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface RequestRepository extends PagingAndSortingRepository<Request, Long> {
+public interface RequestRepository extends JpaRepository<Request, Long> {
 
 }
