@@ -3,9 +3,7 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 const client = require('./client');
-
 const follow = require('./follow'); // function to hop multiple links by "rel"
-
 const root = '/api';
 
 class App extends React.Component {
@@ -99,9 +97,11 @@ class App extends React.Component {
 	}
 	// end::follow-1[]
 
-	render() {
+	render() { 
 		return (
-			<div>
+			<div className='main'>
+			    <Header/>
+				<div className='content'>
 				<CreateDialog attributes={this.state.attributes} onCreate={this.onCreate}/>
 				<RequestList requests={this.state.requests}
 							  links={this.state.links}
@@ -109,6 +109,8 @@ class App extends React.Component {
 							  onNavigate={this.onNavigate}
 							  onDelete={this.onDelete}
 							  updatePageSize={this.updatePageSize}/>
+			</div>
+			<Sidebar/>
 			</div>
 		)
 	}
@@ -148,8 +150,8 @@ class CreateDialog extends React.Component {
 
 		return (
 			<div>
-				<a href="#createRequest">Создать заявку</a>
-
+			<form action = "#createRequest">
+			<button type='submit'>Создать заявку</button></form>
 				<div id="createRequest" className="modalDialog">
 					<div>
 						<a href="#" title="Закрыть" className="close">X</a>
@@ -236,6 +238,7 @@ class RequestList extends React.Component {
 		}
 
 		return (
+
 			<div>
 				<input ref="pageSize" defaultValue={this.props.pageSize} onInput={this.handleInput}/>
 				<table>
@@ -256,6 +259,7 @@ class RequestList extends React.Component {
 				<div>
 					{navLinks}
 				</div>
+
 			</div>
 		)
 	}
@@ -286,15 +290,44 @@ class Request extends React.Component {
 				<td>{this.props.request.prePayment.toString}</td>
 				<td>{this.props.request.dateRequest}</td>
 				<td>
-					<button onClick={this.handleDelete}>Удалить</button>
+					<button class='deleteButton' onClick={this.handleDelete}>Удалить</button>
 				</td>
 			</tr>
 		)
 	}
-}
+	}
 // end::employee[]
 
-ReactDOM.render(
-	<App />,
-	document.getElementById('react')
+
+// tag:: header
+class Header extends React.Component {
+render() {
+return (
+<div className='header'>
+<h1> Приложение </h1>
+</div>
 )
+}
+}
+// end:: header
+
+// tag:: sidebar
+class Sidebar extends React.Component {
+render() {
+		return (
+		<div className='sidebar'>
+		<ul>
+		<li> <a href="#">Item 2</a></li>
+		<li> <a href="#">Item 3</a></li>
+		<li> <a href="#">Item 4</a></li>
+		</ul>
+		</div>
+)
+}
+}
+// end:: sidebar
+
+
+
+
+ReactDOM.render( <App />, document.getElementById('react'))
