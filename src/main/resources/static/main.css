@@ -67,3 +67,70 @@ td, th {
 }
 
 .close:hover { background: #00d9ff; }
+
+/*Стили для компонентов приложения*/
+
+/*Обертка всего приложения*/
+* {
+box-sizing: border-box;
+}
+
+.html, body{
+                margin:0;
+                padding:0;
+                }
+
+.main {
+ height: 100vh;
+ display: grid;
+ grid-template-areas: "header header header"
+ " . . ."
+ "sidebar.content";
+ grid-template-columns: 130px 5px 1fr;
+ grid-template-rows: 90px 5px 1fr;
+}
+
+/*Шапка сайта*/
+.header {
+ grid-area: header;
+background-color: aquamarine;
+}
+
+/*Меню навигации*/
+.sidebar {
+grid-area: sidebar;
+background-color: antiquewhite;
+}
+
+/*Основной контент*/
+.content {
+grid-area: content;
+background-color: azure;
+}
+
+
+/*Стиль заголовков*/
+h1 {
+text-align:center;
+}
+
+/*Стиль списка*/
+ul,li {
+font-weight:bold;
+}
+
+.deleteButton {
+background: transparent;
+border: 1px solid #f00;
+border-radius: 2em;
+color: #f00;
+display: inline-block;
+font-size: 12px;
+height: 20px;
+line-height: 2px;
+margin: 0 0 8px;
+padding: 0;
+text-align: center;
+width: 65px;
+font-weight:bold;
+}
